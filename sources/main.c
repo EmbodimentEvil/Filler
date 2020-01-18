@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 17:34:49 by cyuriko           #+#    #+#             */
-/*   Updated: 2020/01/16 17:11:31 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/18 19:41:18 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,3 +40,5 @@ int			main(void)
 	ft_free(Endgame, env);
 	return (0);
 }
+//  clear ; make ; ./resources/filler_vm -p1 ./sleonia.filler -p2 resources/players/carli.filler -f resources/maps/map01
+//  clear ; make ; ./resources/filler_vm -p1 resources/players/carli.filler -p2 ./sleonia.filler -f resources/maps/map01

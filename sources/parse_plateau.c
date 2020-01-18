@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 01:59:32 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/14 10:10:40 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/18 19:46:57 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,17 @@ static bool	parse_plateau_size(t_env *env)
 		ft_strdel(&line);
 		return (false);
 	}
+	ft_strdel(&line);
+	if (ft_len_arr(split) < 3)
+	{
+		ft_destroy_string_arr(split);
+		return (false);			
+	}
 	env->plateau->height = ft_atoi(split[1]);
 	env->plateau->width = ft_atoi(split[2]);
-	ft_strdel(&line);
 	ft_destroy_string_arr(split);
+	if (env->plateau->height < 0 || env->plateau->width < 0)
+		return (false);
 	return (true);
 }
 
@@ -47,13 +54,17 @@ static bool	read_plateau_map(t_env *env)
 			ft_strdel(&line);
 			return (false);
 		}
+		ft_strdel(&line);
+		if (ft_len_arr(split) < 2)
+		{
+			ft_destroy_string_arr(split);
+			return (false);			
+		}
 		if (!(env->plateau->map[i] = ft_strdup(split[1])))
 		{
-			ft_strdel(&line);
 			ft_destroy_string_arr(split);
 			return (false);
 		}
-		ft_strdel(&line);
 		ft_destroy_string_arr(split);
 	}
 	return (true);

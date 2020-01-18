@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 01:20:08 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/16 16:24:45 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/18 19:41:36 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ bool		parse_player(t_env *env)
 	}
 	else
 	{
+		ft_strdel(&line);
 		ft_memdel((void *)&env);
 		return (false);
 	}
