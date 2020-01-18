@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/14 01:12:20 by sleonia           #+#    #+#              #
-#    Updated: 2020/01/16 16:56:07 by sleonia          ###   ########.fr        #
+#    Updated: 2020/01/18 23:21:47 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ FRAMEDIR = /Users/$(USER)/Library/Frameworks
 SRC_PATH = ./sources/
 OBJ_PATH = ./objects/
 INC_PATH = ./includes/
-LIB_PATH = ../libft
+LIB_PATH = ../libft/
 
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
@@ -53,6 +53,7 @@ SRC_NAME =		calc_size.c				\
 				main.c					\
 				parse.c					\
 				render.c				\
+				scaled_texture.c		\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 

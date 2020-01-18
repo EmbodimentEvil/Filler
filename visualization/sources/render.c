@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 02:02:10 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/16 16:49:23 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 00:38:16 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static void			render_background(t_sdl *sdl)
 	rect.y = 0;
 	rect.x = 0;
 	SDL_FillRect(sdl->sur, &rect,
-				SDL_MapRGB(sdl->sur->format, 224, 224, 224));
+				// SDL_MapRGB(sdl->sur->format, 224, 224, 224));
+				SDL_MapRGB(sdl->sur->format, 30, 30, 30));
 }
 
 static void			render_map(t_env *env)
@@ -71,9 +72,43 @@ static void		render_score(t_env *env)
 	
 }
 
+void	draw_image(SDL_Surface *sur,
+				const int x, const int y,
+				const int output_w, const int output_h,
+				const int output_x, const int output_y,
+				SDL_Surface *screen)
+{
+	SDL_Rect	desc;
+	SDL_Rect	src;
+
+	desc.x = x;
+	desc.y = y;
+
+	src.x = output_x;
+	src.y = output_y;
+	src.w = output_w;
+	src.h = output_h;
+    SDL_BlitSurface(sur, &src, screen, &desc);
+}
+
 void			render(t_env *env)
 {
 	render_background(env->sdl);
-	render_map(env);
-	render_score(env);
+	// render_map(env);
+	// render_score(env);
+	if (env->game_mode == Pixel)
+	{
+		render_texture_man(0, 0, env);
+		render_texture_robot(0, 0, env);
+	}
+	else
+	{
+		render_texture_ricardo(0, 0, env);
+		render_texture_gachi(0, 0, env);
+	}
+	// SDL_BlitScaled(env->sdl->player2, &rect, env->sdl->sur, &dest);
+	// SDL_BlitScaled(env->sdl->player1, &rect, env->sdl->sur, &dest);
+	// SDL_BlitScaled(env->sdl->player1, NULL, env->sdl->sur, &dest);
+	// draw_image(env->sdl->sur, 1600, 1000, 100, 100, 100, 100, env->sdl->player1);
+	// draw_image(env->sdl->player1, 0, 0, 600, 600, 0, 0, env->sdl->sur);
 }

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 01:50:17 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/16 17:12:22 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/18 23:19:47 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,6 @@ t_env			*init_env(void);
 void			init_sdl(int game_mode, t_sdl *sdl);
 
 /*
-**	ft_exit.c
-*/
-void			ft_exit(const char *error_text);
-
-/*
 **	main_loop.c
 */
 void			main_loop(t_env *env);
@@ -62,5 +57,13 @@ void			parse(t_env *env);
 **	render.c
 */
 void			render(t_env *env);
+
+/*
+**	scaled_texture.c
+*/
+void		render_texture_man(int x, int y, t_env *env);
+void		render_texture_robot(int x, int y, t_env *env);
+void		render_texture_ricardo(int x, int y, t_env *env);
+void		render_texture_gachi(int x, int y, t_env *env);
 
 #endif
