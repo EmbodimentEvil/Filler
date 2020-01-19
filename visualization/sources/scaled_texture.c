@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 23:04:52 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 07:29:36 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 07:42:08 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	render_texture_man(int x, int y, t_env *env)
 	rect.y = 0;
 	rect.w = 1000;
 	rect.h = 1000;
-
 	dest.x = 0 + x;
 	dest.y = 0 + y;
 	dest.w = 100;
@@ -38,7 +37,6 @@ void	render_texture_robot(int x, int y, t_env *env)
 	rect.y = -20;
 	rect.w = 1000;
 	rect.h = 1000;
-
 	dest.x = 40 + x;
 	dest.y = 0 + y;
 	dest.w = 210;
@@ -55,7 +53,6 @@ void	render_texture_ricardo(int x, int y, t_env *env)
 	rect.y = 0;
 	rect.w = 1000;
 	rect.h = 1000;
-
 	dest.x = 200 + x;
 	dest.y = 200 + y;
 	dest.w = 300;
@@ -72,7 +69,6 @@ void	render_texture_gachi(int x, int y, t_env *env)
 	rect.y = 0;
 	rect.w = 1000;
 	rect.h = 1000;
-
 	dest.x = 0 + x;
 	dest.y = 200 + y;
 	dest.w = 220;

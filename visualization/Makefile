@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/14 01:12:20 by sleonia           #+#    #+#              #
-#    Updated: 2020/01/19 06:34:26 by sleonia          ###   ########.fr        #
+#    Updated: 2020/01/19 08:14:36 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC_NAME =		calc_size.c				\
 				events.c				\
 				main.c					\
 				parse.c					\
+				render_map.c			\
 				render.c				\
 				scaled_texture.c		\
 				utils.c					\

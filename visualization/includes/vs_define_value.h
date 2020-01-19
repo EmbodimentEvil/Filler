@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 02:33:42 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 04:58:12 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 08:40:12 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@
 # define WIDTH				1920
 
 # define MY_COLOR			0xFF0000
-# define ENEMY_COLOR		0x0000FF
+# define ENEMY_COLOR		0x3385ff
 
 #endif

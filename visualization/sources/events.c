@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 01:44:00 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 07:03:22 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 08:26:49 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,30 @@ static t_plateau	*next_plateau(t_env *env)
 	return ((env->plateau->next) ? env->plateau->next : env->plateau);
 }
 
-// static t_plateau	*key_events(t_env *env, SDL_Event event)
-// {
-// 	if (event.key.keysym.sym == SDLK_SPACE)
-// 	{
-// 		if (!env->plateau->next)
-// 			parse(env);
-// 	}
-// 	return ((env->plateau->next) ? env->plateau->next : env->plateau);
-// }
+static void			prev_step(t_env *env, SDL_Event event)
+{
+	if (((event.type == SDL_KEYDOWN
+		&& event.key.keysym.scancode == SDL_SCANCODE_LEFT)
+		|| (event.type == SDL_MOUSEBUTTONDOWN
+		&& event.button.button == SDL_BUTTON_RIGHT))
+		&& env->plateau->prev)
+	{
+		env->is_pause = true;
+		env->plateau = env->plateau->prev;
+	}
+}
+
+static void			next_step(t_env *env, SDL_Event event)
+{
+	if ((event.type == SDL_KEYDOWN
+		&& event.key.keysym.scancode == SDL_SCANCODE_RIGHT)
+		|| (event.type == SDL_MOUSEBUTTONDOWN
+		&& event.button.button == SDL_BUTTON_LEFT))
+	{
+		env->is_pause = true;
+		env->plateau = next_plateau(env);
+	}
+}
 
 void				events(t_env *env)
 {
@@ -40,23 +55,8 @@ void				events(t_env *env)
 		else if (event.type == SDL_KEYDOWN
 			&& event.key.keysym.scancode == SDL_SCANCODE_SPACE)
 			env->is_pause = !(env->is_pause);
-		else if (((event.type == SDL_KEYDOWN
-			&& event.key.keysym.scancode == SDL_SCANCODE_LEFT)
-			|| (event.type == SDL_MOUSEBUTTONDOWN
-			&& event.button.button == SDL_BUTTON_RIGHT))
-			&& env->plateau->prev)
-		{
-			env->is_pause = true;
-			env->plateau = env->plateau->prev;
-		}
-		else if ((event.type == SDL_KEYDOWN
-			&& event.key.keysym.scancode == SDL_SCANCODE_RIGHT)
-			|| (event.type == SDL_MOUSEBUTTONDOWN
-			&& event.button.button == SDL_BUTTON_LEFT))
-		{
-			env->is_pause = true;
-			env->plateau = next_plateau(env);
-		}
+		prev_step(env, event);
+		next_step(env, event);
 	}
 	if (!env->is_pause)
 		env->plateau = next_plateau(env);

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 01:50:17 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 06:59:11 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 08:14:58 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ void			events(t_env *env);
 **	parse.c
 */
 void			parse(t_env *env);
+
+/*
+**	render_map.c
+*/
+void			render_map(t_env *env);
 
 /*
 **	render.c

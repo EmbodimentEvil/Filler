@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 01:33:07 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 07:03:30 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 08:26:34 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,14 @@ static int	parse_argument(int ac, char **av, int *game_mode)
 	else if (ft_strcmp(av[1], "-gachi") == 0)
 		*game_mode = Gachi;
 	else
-		return(show_example_input());
+		return (show_example_input());
 	return (0);
 }
 
 static void	quit(t_env *env)
 {
-	Mix_FreeMusic(env->sdl->music[0]);
-	Mix_FreeMusic(env->sdl->music[1]);
-	SDL_FreeSurface(env->sdl->sur);
-	SDL_FreeSurface(env->sdl->player1);
-	SDL_FreeSurface(env->sdl->player2);
-	SDL_DestroyWindow(env->sdl->win);
-	ft_memdel((void *)&env->sdl);
-	ft_memdel((void *)&env->math);
 	SDL_Quit();
+	exit(1);
 }
 
 int			main(int ac, char **av)
@@ -52,7 +45,7 @@ int			main(int ac, char **av)
 
 	env = init_env();
 	if (parse_argument(ac, av, &env->game_mode) == 1)
-		return (0);	
+		return (0);
 	init_sdl(env->game_mode, env->sdl);
 	change_music(env->game_mode, env->sdl->music);
 	parse(env);
