@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 01:44:00 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 06:43:41 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 06:52:37 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,19 @@ void				events(t_env *env)
 		else if (event.type == SDL_KEYDOWN
 			&& event.key.keysym.scancode == SDL_SCANCODE_SPACE)
 			env->is_pause = !(env->is_pause);
-		else if (event.type == SDL_KEYDOWN
-			&& event.key.keysym.scancode == SDL_SCANCODE_LEFT
+		else if (((event.type == SDL_KEYDOWN
+			&& event.key.keysym.scancode == SDL_SCANCODE_LEFT)
+			|| (event.type == SDL_MOUSEBUTTONDOWN
+			&& event.button.button == SDL_BUTTON_RIGHT))
 			&& env->plateau->prev)
 		{
 			env->is_pause = true;
 			env->plateau = env->plateau->prev;
 		}
-		else if (event.type == SDL_KEYDOWN
+		else if ((event.type == SDL_KEYDOWN
 			&& event.key.keysym.scancode == SDL_SCANCODE_RIGHT)
+			|| (event.type == SDL_MOUSEBUTTONDOWN
+			&& event.button.button == SDL_BUTTON_LEFT))
 		{
 			env->is_pause = true;
 			env->plateau = next_plateau(env);
