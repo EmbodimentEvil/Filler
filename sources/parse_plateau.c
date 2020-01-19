@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 01:59:32 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/18 20:13:28 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 08:53:51 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,11 @@ static bool	read_plateau_loop(int i, char *line, char **split, t_env *env)
 
 static bool	read_plateau_map(t_env *env)
 {
-	int		i;
 	char	*line;
 	char	**split;
 
+	line = NULL;
+	split = NULL;
 	return (read_plateau_loop(-1, line, split, env));
 }
 

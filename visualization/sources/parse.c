@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 04:33:39 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 08:08:39 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 09:13:41 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ static void		parse_plateau(t_plateau *plateau)
 	char		*line;
 	char		**split;
 
-	if (get_next_line(0, &line) == -1)
+	if (get_next_line(0, &line) != 1)
 		ft_exit("ERROR_GNL");
 	ft_strdel(&line);
 	i = -1;
 	plateau->map = init_map(plateau->height + 1);
 	while (++i < plateau->height)
 	{
-		if (get_next_line(0, &line) == -1)
+		if (get_next_line(0, &line) != 1)
 			ft_exit("ERROR_GNL");
 		if (!(split = ft_strsplit(line, ' ')))
 			ft_exit(ERROR_STRSPLIT);

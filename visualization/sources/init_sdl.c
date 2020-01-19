@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 11:01:36 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 07:42:24 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 08:56:56 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void			init_sdl(int game_mode, t_sdl *sdl)
 	SDL_Surface		*conv_sur_icon;
 
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
+		ft_exit((char *)SDL_GetError());
+	if (TTF_Init() == -1)
 		ft_exit((char *)SDL_GetError());
 	if (!(sdl->win = SDL_CreateWindow("FILLER",
 									SDL_WINDOWPOS_UNDEFINED,

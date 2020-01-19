@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 15:37:46 by cyuriko           #+#    #+#             */
-/*   Updated: 2020/01/18 20:24:42 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 08:55:31 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "SDL.h"
 # include <SDL_mixer.h>
 # include <SDL_image.h>
+# include <SDL_ttf.h>
 # include <stdbool.h>
 
 # include "../../libft/includes/libft.h"

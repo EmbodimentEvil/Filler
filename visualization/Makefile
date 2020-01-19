@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/14 01:12:20 by sleonia           #+#    #+#              #
-#    Updated: 2020/01/19 08:14:36 by sleonia          ###   ########.fr        #
+#    Updated: 2020/01/19 09:06:38 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,8 +34,7 @@ INC_SDL = 		-I Frameworks/SDL2.framework/Versions/A/Headers 		\
 FRAME = 	-F Frameworks/ -framework SDL2 -framework SDL2_image 		\
             -framework SDL2_ttf -framework SDL2_mixer -rpath Frameworks/
 
-FLAGS = 	-Ofast -g
-# FLAGS = 	-Wall -Werror -Wextra -Ofast -g
+FLAGS = 	-Wall -Werror -Wextra -Ofast -g
 
 HEADERS_NAME =	vs_define_value.h		\
 				vs_function.h			\

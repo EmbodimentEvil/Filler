@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 01:33:07 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 08:26:34 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 08:58:27 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ static int	parse_argument(int ac, char **av, int *game_mode)
 
 static void	quit(t_env *env)
 {
+	TTF_Quit();
 	SDL_Quit();
-	exit(1);
+	(void)env;
+	exit(0);
 }
 
 int			main(int ac, char **av)
