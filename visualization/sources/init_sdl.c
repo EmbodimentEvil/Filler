@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 11:01:36 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 03:11:28 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 05:17:11 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void		init_sdl_music(Mix_Music **music)
 	if (SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO) < 0)
 		ft_exit((char *)SDL_GetError());
 	Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 640);
-	Mix_VolumeMusic(128);
-	// Mix_VolumeMusic(0);
+	// Mix_VolumeMusic(128);
+	Mix_VolumeMusic(0);
 	if (!(music[0] = Mix_LoadMUS("assets/music/pixel_song.mp3")))
 		ft_exit((char *)SDL_GetError());
 	if (!(music[1] = Mix_LoadMUS("assets/music/ricardo.mp3")))

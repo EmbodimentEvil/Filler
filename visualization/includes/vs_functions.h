@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 01:50:17 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 04:44:57 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 06:34:07 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@ void			calc_size(t_env *env);
 void			change_music(int game_mode, Mix_Music **music);
 
 /*
-**	events.c
-*/
-void			key_events(t_env *env, SDL_Event event);
-void			mouse_events(t_env *env, SDL_Event event);
-
-/*
 **	init.c
 */
 char			**init_map(const int height);
@@ -44,9 +38,9 @@ t_env			*init_env(void);
 void			init_sdl(int game_mode, t_sdl *sdl);
 
 /*
-**	main_loop.c
+**	events.c
 */
-void			main_loop(t_env *env);
+void			events(t_env *env);
 
 /*
 **	parse.c

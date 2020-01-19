@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 01:33:07 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 03:48:44 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 06:34:43 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ static int	parse_argument(int ac, char **av, int *game_mode)
 	return (0);
 }
 
+static void	quit(t_env *env)
+{
+	SDL_DestroyWindow(env->sdl->win);
+	SDL_Quit();
+}
+
 int			main(int ac, char **av)
 {
 	t_env	*env;
@@ -43,6 +49,13 @@ int			main(int ac, char **av)
 	init_sdl(env->game_mode, env->sdl);
 	change_music(env->game_mode, env->sdl->music);
 	parse(env);
-	main_loop(env);
+	while (env->plateau && !env->is_close)
+	{
+		events(env);
+		render(env);
+		SDL_UpdateWindowSurface(env->sdl->win);
+		SDL_Delay(1200 / 60);
+	}
+	quit(env);
 	return (0);
 }

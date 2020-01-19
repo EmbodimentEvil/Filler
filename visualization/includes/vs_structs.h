@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 01:53:49 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 04:28:00 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 06:10:56 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct			s_env
 	t_plateau			*plateau;
 	t_math				*math;
 	bool				is_pause;
+	bool				is_close;
 	int					game_mode;
 }						t_env;
 

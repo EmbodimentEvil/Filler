@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 04:33:39 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/16 09:25:07 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 06:26:57 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,18 @@ static void		parse_plateau(t_plateau *plateau)
 
 static void		add_to_list(t_env *env, t_plateau *plateau)
 {
-	if (!env->plateau)
-		env->plateau = plateau;
-	else
+	t_plateau	*prev;
+
+	if (env->plateau)
 	{
-		while (env->plateau)
-		{
-			if (!env->plateau->next)
-			{
-				plateau->prev = env->plateau;
-				env->plateau->next = plateau;
-			}
-			env->plateau = env->plateau->next;
-		}
+		prev = env->plateau;
+		while (prev->next)
+			prev = prev->next;
+		prev->next = plateau;
+		plateau->prev = prev;
 	}
+	else
+		env->plateau = plateau;
 }
 
 void			parse(t_env *env)

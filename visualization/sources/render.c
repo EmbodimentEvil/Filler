@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 02:02:10 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 05:02:20 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 06:26:36 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,40 +78,25 @@ static void		render_map(t_env *env)
 	}
 }
 
-// void		draw_status(t_vs *vs)
-// {
-// 	SDL_Rect	rect;
-// 	SDL_Color	red;
-// 	SDL_Color	blue;
-
-// 	red = init_color(200, 53, 48, 255);
-// 	blue = init_color(78, 150, 207, 255);
-// 	rect = (SDL_Rect){ 0, 0, WIDTH, 10 };
-// 	draw_rect(vs, &rect, blue);
-// 	rect.w = WIDTH * vs->p1_counter / (vs->p1_counter + vs->p2_counter);
-// 	draw_rect(vs, &rect, red);
-// 	rect = (SDL_Rect){ 0, HEIGHT - 10, WIDTH, 10 };
-// 	if (vs->p1_counter > vs->p2_counter)
-// 		draw_rect(vs, &rect, red);
-// 	else if (vs->p2_counter > vs->p1_counter)
-// 		draw_rect(vs, &rect, blue);
-// }
-
 static void		render_score(t_env *env)
 {
 	t_rect		rect;
-	// int			n_digits;
-	// int			sum_score;
-	// float		percent;
 
-	// sum_score = env->math->my_score + env->math->enemy_score;
 	rect = (t_rect){30, 130, 10, env->sdl->sur->w};
-	// rect.w = env->sdl->sur->w * 10 / (10 + 20);
-	// rect.w = env->sdl->sur->w * env->math->my_score / (env->math->my_score + env->math->enemy_score);
+	rect.w = env->sdl->sur->w * env->math->my_score
+				/ (env->math->my_score + env->math->enemy_score);
+	if (env->game_mode == Pixel)
+		render_texture_man(rect.w - 50, 30, env);
+	else
+		render_texture_ricardo(rect.w, 0, env);
 	render_figure(rect, MY_COLOR, env->sdl);
 	rect.y += 130;
-	// rect.w = env->sdl->sur->w * 20 / (10 + 20);
-	// rect.w = env->sdl->sur->w * env->math->my_score / (env->math->my_score + env->math->enemy_score);
+	rect.w = env->sdl->sur->w * env->math->enemy_score
+				/ (env->math->my_score + env->math->enemy_score);
+	if (env->game_mode == Pixel)
+		render_texture_robot(rect.w - 80, 160, env);
+	else
+		render_texture_gachi(rect.w, 0, env);
 	render_figure(rect, ENEMY_COLOR, env->sdl);
 }
 
@@ -121,14 +106,4 @@ void			render(t_env *env)
 	render_map(env);
 	render_score(env);
 	render_borders(env->sdl);
-	if (env->game_mode == Pixel)
-	{
-		render_texture_man(0, 0, env);
-		render_texture_robot(0, 0, env);
-	}
-	else
-	{
-		render_texture_ricardo(0, 0, env);
-		render_texture_gachi(0, 0, env);
-	}
 }
