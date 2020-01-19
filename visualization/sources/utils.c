@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   define_value.h                                     :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/25 02:33:42 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 04:57:28 by sleonia          ###   ########.fr       */
+/*   Created: 2020/01/19 02:09:07 by sleonia           #+#    #+#             */
+/*   Updated: 2020/01/19 04:44:57 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINE_VALUE_H
-# define DEFINE_VALUE_H
+#include "vs_filler.h"
 
-# include "filler.h"
+int				set_rgb(int red, int green, int blue)
+{
+	return ((red & 0xFF) << 16) + ((green & 0xFF) << 8) + (blue & 0xFF);
+}
 
-# define PLAYER_1			"$$$ exec p1 : [./sleonia.filler]"
-# define PLAYER_2			"$$$ exec p2 : [./sleonia.filler]"
-# define PLAYER_1_BIG		'X'
-# define PLAYER_2_BIG		'O'
-# define PLAYER_1_SMALL		'x'
-# define PLAYER_2_SMALL		'o'
-# define MY_HEAT			-2
-# define ENEMY_HEAT			-1
+// SDL_Rect		*set_rect_size(int x, int y, int h, int w)
+// {
+// 	SDL_Rect 	*rect;
 
-#endif
+// 	rect = ft_safe_malloc(sizeof(SDL_Rect *));
+// 	rect.x = x;
+// 	rect.y = y;
+// 	rect.h = h;
+// 	rect.w = w;
+// 	return (rect);
+// }

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 01:53:49 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/16 17:12:28 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 04:28:00 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ typedef enum			e_game_mode
 	Pixel,
 	Gachi
 }						t_game_mode;
+
+typedef struct			s_rect
+{
+	int					x;
+	int					y;
+	int					h;
+	int					w;
+}						t_rect;
 
 typedef struct			s_math
 {

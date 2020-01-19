@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 23:04:52 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 01:49:47 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 01:52:13 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	render_texture_robot(int x, int y, t_env *env)
 
 	dest.x = 40;
 	dest.y = 0;
-	dest.w = 200;
-	dest.h = 200;
+	dest.w = 210;
+	dest.h = 210;
 	SDL_BlitScaled(env->sdl->player2, &rect, env->sdl->sur, &dest);
 }
 

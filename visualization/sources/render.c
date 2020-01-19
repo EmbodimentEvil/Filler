@@ -6,30 +6,46 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 02:02:10 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 00:38:16 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 05:02:20 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vs_filler.h"
 
-static void			render_background(t_sdl *sdl)
+static void		render_figure(t_rect tmp, int color, t_sdl *sdl)
 {
-	SDL_Rect rect;
+	SDL_Rect	rect;
 
-	rect.h = sdl->sur->h;
-	rect.w = sdl->sur->w;
-	rect.y = 0;
-	rect.x = 0;
-	SDL_FillRect(sdl->sur, &rect,
-				// SDL_MapRGB(sdl->sur->format, 224, 224, 224));
-				SDL_MapRGB(sdl->sur->format, 30, 30, 30));
+	rect.x = tmp.x;
+	rect.y = tmp.y;
+	rect.h = tmp.h;
+	rect.w = tmp.w;
+	SDL_FillRect(sdl->sur, &rect, color);
 }
 
-static void			render_map(t_env *env)
+static void		render_background(t_sdl *sdl)
 {
-	SDL_Rect		rect;
-	int				x;
-	int				y;
+	render_figure((t_rect){0, 0, sdl->sur->h, sdl->sur->w},
+					set_rgb(224, 224, 224), sdl);
+}
+
+static void		render_borders(t_sdl *sdl)
+{
+	render_figure((t_rect){0, 0, 10, sdl->sur->w},
+					set_rgb(65, 95, 65), sdl);
+	render_figure((t_rect){0, sdl->sur->h - 10, 10, sdl->sur->w},
+					set_rgb(65, 95, 65), sdl);
+	render_figure((t_rect){0, 0, sdl->sur->h, 10},
+					set_rgb(65, 95, 65), sdl);
+	render_figure((t_rect){sdl->sur->w - 10, 0, sdl->sur->h, 10},
+					set_rgb(65, 95, 65), sdl);
+}
+
+static void		render_map(t_env *env)
+{
+	SDL_Rect	rect;
+	int			x;
+	int			y;
 
 	y = -1;
 	calc_size(env);
@@ -44,58 +60,67 @@ static void			render_map(t_env *env)
 			rect.y = env->math->start_y + y * env->math->cell_shift;
 			if (env->plateau->map[y][x] == '.')
 			{
-				SDL_FillRect(env->sdl->sur, &rect, SDL_MapRGB(env->sdl->sur->format, 173, 220, 244));
+				SDL_FillRect(env->sdl->sur, &rect, set_rgb(244, 231, 185));
 			}
 			else if (ft_toupper(env->plateau->map[y][x]) == 'O')
 			{
-				SDL_FillRect(env->sdl->sur, &rect, SDL_MapRGB(env->sdl->sur->format, 255, 0, 0));
+				SDL_FillRect(env->sdl->sur, &rect, ENEMY_COLOR);
 				env->math->enemy_score++;
 			}
 			else if (ft_toupper(env->plateau->map[y][x]) == 'X')
 			{
-				SDL_FillRect(env->sdl->sur, &rect, SDL_MapRGB(env->sdl->sur->format, 0, 0, 255));
+				SDL_FillRect(env->sdl->sur, &rect, MY_COLOR);
 				env->math->my_score++;
 			}
+			else
+				ft_exit(ERROR_INPUT);
 		}
 	}
 }
 
+// void		draw_status(t_vs *vs)
+// {
+// 	SDL_Rect	rect;
+// 	SDL_Color	red;
+// 	SDL_Color	blue;
+
+// 	red = init_color(200, 53, 48, 255);
+// 	blue = init_color(78, 150, 207, 255);
+// 	rect = (SDL_Rect){ 0, 0, WIDTH, 10 };
+// 	draw_rect(vs, &rect, blue);
+// 	rect.w = WIDTH * vs->p1_counter / (vs->p1_counter + vs->p2_counter);
+// 	draw_rect(vs, &rect, red);
+// 	rect = (SDL_Rect){ 0, HEIGHT - 10, WIDTH, 10 };
+// 	if (vs->p1_counter > vs->p2_counter)
+// 		draw_rect(vs, &rect, red);
+// 	else if (vs->p2_counter > vs->p1_counter)
+// 		draw_rect(vs, &rect, blue);
+// }
+
 static void		render_score(t_env *env)
 {
-	SDL_Rect	rect;
-	int			n_digits;
-	int			sum_score;
-	float		percent;
+	t_rect		rect;
+	// int			n_digits;
+	// int			sum_score;
+	// float		percent;
 
-	sum_score = env->math->my_score + env->math->enemy_score;
-	n_digits = floor(log10(abs(sum_score))) + 1;
-	
-}
-
-void	draw_image(SDL_Surface *sur,
-				const int x, const int y,
-				const int output_w, const int output_h,
-				const int output_x, const int output_y,
-				SDL_Surface *screen)
-{
-	SDL_Rect	desc;
-	SDL_Rect	src;
-
-	desc.x = x;
-	desc.y = y;
-
-	src.x = output_x;
-	src.y = output_y;
-	src.w = output_w;
-	src.h = output_h;
-    SDL_BlitSurface(sur, &src, screen, &desc);
+	// sum_score = env->math->my_score + env->math->enemy_score;
+	rect = (t_rect){30, 130, 10, env->sdl->sur->w};
+	// rect.w = env->sdl->sur->w * 10 / (10 + 20);
+	// rect.w = env->sdl->sur->w * env->math->my_score / (env->math->my_score + env->math->enemy_score);
+	render_figure(rect, MY_COLOR, env->sdl);
+	rect.y += 130;
+	// rect.w = env->sdl->sur->w * 20 / (10 + 20);
+	// rect.w = env->sdl->sur->w * env->math->my_score / (env->math->my_score + env->math->enemy_score);
+	render_figure(rect, ENEMY_COLOR, env->sdl);
 }
 
 void			render(t_env *env)
 {
 	render_background(env->sdl);
-	// render_map(env);
-	// render_score(env);
+	render_map(env);
+	render_score(env);
+	render_borders(env->sdl);
 	if (env->game_mode == Pixel)
 	{
 		render_texture_man(0, 0, env);
@@ -106,9 +131,4 @@ void			render(t_env *env)
 		render_texture_ricardo(0, 0, env);
 		render_texture_gachi(0, 0, env);
 	}
-	// SDL_BlitScaled(env->sdl->player2, &rect, env->sdl->sur, &dest);
-	// SDL_BlitScaled(env->sdl->player1, &rect, env->sdl->sur, &dest);
-	// SDL_BlitScaled(env->sdl->player1, NULL, env->sdl->sur, &dest);
-	// draw_image(env->sdl->sur, 1600, 1000, 100, 100, 100, 100, env->sdl->player1);
-	// draw_image(env->sdl->player1, 0, 0, 600, 600, 0, 0, env->sdl->sur);
 }

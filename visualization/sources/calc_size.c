@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 08:27:29 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/18 21:08:47 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 02:22:03 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		calc_size(t_env *env)
 	env->math->cell_size = env->math->cell_shift * 85 / 100;
 	env->math->start_y = (env->sdl->sur->h + 250 - plateau_height
 						+ (env->math->cell_shift - env->math->cell_size)) / 2;
-	env->math->start_x = (env->sdl->sur->w - 250 - plateau_width
+	env->math->start_x = (env->sdl->sur->w - 350 - plateau_width
 						+ (env->math->cell_shift - env->math->cell_size)) / 2;
 	env->math->enemy_score = 0;
 	env->math->my_score = 0;

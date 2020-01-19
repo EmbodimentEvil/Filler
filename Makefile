@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/14 01:12:20 by sleonia           #+#    #+#              #
-#    Updated: 2020/01/16 15:12:42 by sleonia          ###   ########.fr        #
+#    Updated: 2020/01/19 05:03:44 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make lib_refresh
+	@make visualization_refresh
 	@gcc $(FLAGS) -o $(NAME) $(OBJ) -lft -L $(LIB_PATH) $(FRAME)
 	 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADERS)
@@ -60,16 +61,18 @@ lib_refresh:
 	@make -C $(LIB_PATH)
 
 visualization_refresh:
-	@make -C $(LIB_PATH)
+	@make -C $(VIZ_PATH)
 
 clean:
 	@find . -name ".DS_Store" -delete
 	@clear
 	@rm -rf $(OBJ_PATH)
 	@make clean -C $(LIB_PATH)
+	@make clean -C $(VIZ_PATH)
 
 fclean: clean
 	@rm -f $(NAME)
 	@make fclean -C $(LIB_PATH)
+	@make fclean -C $(VIZ_PATH)
 
 re: fclean all

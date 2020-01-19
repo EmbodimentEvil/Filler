@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/14 01:12:20 by sleonia           #+#    #+#              #
-#    Updated: 2020/01/18 23:21:47 by sleonia          ###   ########.fr        #
+#    Updated: 2020/01/19 02:09:20 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ SRC_NAME =		calc_size.c				\
 				parse.c					\
 				render.c				\
 				scaled_texture.c		\
+				utils.c					\
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
