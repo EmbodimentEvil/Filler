@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 01:53:49 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 06:10:56 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 07:00:42 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ typedef struct			s_sdl
 {
 	SDL_Window			*win;
 	SDL_Surface			*sur;
-	SDL_Event			event;
 	SDL_Surface			*player1;
 	SDL_Surface			*player2;
 	Mix_Music			*music[2];

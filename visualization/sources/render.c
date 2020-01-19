@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 02:02:10 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 06:26:36 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 07:30:23 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,13 @@ static void		render_score(t_env *env)
 {
 	t_rect		rect;
 
-	rect = (t_rect){30, 130, 10, env->sdl->sur->w};
+	rect = (t_rect){30, 130, 25, env->sdl->sur->w};
 	rect.w = env->sdl->sur->w * env->math->my_score
 				/ (env->math->my_score + env->math->enemy_score);
 	if (env->game_mode == Pixel)
 		render_texture_man(rect.w - 50, 30, env);
 	else
-		render_texture_ricardo(rect.w, 0, env);
+		render_texture_ricardo(rect.w - 290, -155, env);
 	render_figure(rect, MY_COLOR, env->sdl);
 	rect.y += 130;
 	rect.w = env->sdl->sur->w * env->math->enemy_score
@@ -96,7 +96,7 @@ static void		render_score(t_env *env)
 	if (env->game_mode == Pixel)
 		render_texture_robot(rect.w - 80, 160, env);
 	else
-		render_texture_gachi(rect.w, 0, env);
+		render_texture_gachi(rect.w - 77, -23, env);
 	render_figure(rect, ENEMY_COLOR, env->sdl);
 }
 

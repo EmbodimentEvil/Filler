@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 23:04:52 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 05:10:54 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 07:29:36 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	render_texture_gachi(int x, int y, t_env *env)
 
 	dest.x = 0 + x;
 	dest.y = 200 + y;
-	dest.w = 240;
-	dest.h = 240;
+	dest.w = 220;
+	dest.h = 220;
 	SDL_BlitScaled(env->sdl->player1, &rect, env->sdl->sur, &dest);
 }

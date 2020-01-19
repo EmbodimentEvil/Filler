@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 01:33:07 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 06:34:43 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 07:03:30 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,14 @@ static int	parse_argument(int ac, char **av, int *game_mode)
 
 static void	quit(t_env *env)
 {
+	Mix_FreeMusic(env->sdl->music[0]);
+	Mix_FreeMusic(env->sdl->music[1]);
+	SDL_FreeSurface(env->sdl->sur);
+	SDL_FreeSurface(env->sdl->player1);
+	SDL_FreeSurface(env->sdl->player2);
 	SDL_DestroyWindow(env->sdl->win);
+	ft_memdel((void *)&env->sdl);
+	ft_memdel((void *)&env->math);
 	SDL_Quit();
 }
 
@@ -54,7 +61,7 @@ int			main(int ac, char **av)
 		events(env);
 		render(env);
 		SDL_UpdateWindowSurface(env->sdl->win);
-		SDL_Delay(1200 / 60);
+		SDL_Delay(1800 / 60);
 	}
 	quit(env);
 	return (0);

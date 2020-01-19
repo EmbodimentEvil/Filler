@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 01:46:47 by sleonia           #+#    #+#             */
-/*   Updated: 2020/01/19 06:11:52 by sleonia          ###   ########.fr       */
+/*   Updated: 2020/01/19 07:06:24 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_plateau		*init_plateau(void)
 	plateau = (t_plateau *)ft_safe_malloc(sizeof(t_plateau));
 	plateau->height = 0;
 	plateau->width = 0;
+	plateau->map = NULL;
 	plateau->next = NULL;
 	plateau->prev = NULL;
 	return (plateau);
