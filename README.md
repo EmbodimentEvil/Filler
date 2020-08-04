@@ -1,11 +1,11 @@
 # Filler 
-![FILLER](https://github.com/EmbodimentEvil/Filler/blob/master/images/icon.png)
+![FILLER](https://github.com/sleonia/Filler/blob/master/images/icon.png)
 ---
 ##### Filler is a School 42 project. The purpose of this project is to create bot for map-filler puzzle game.
 ---
 ## Compiling
 Runs on OSX.  
-Clone `git clone --recursive https://github.com/EmbodimentEvil/Filler`  
+Clone `git clone --recursive https://github.com/sleonia/Filler`  
 Use `make` and programm will compile.  
 
 ---
